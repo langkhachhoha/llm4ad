@@ -411,7 +411,8 @@ def get_results(log_dir, max_sample_nums):
                 continue
             figures.append(fig)
             display_plot(index - 1)
-            display_alg(alg)
+            if alg is not None:
+                display_alg(alg)
             objective_label['text'] = f'Current best objective:{best_obj}'
             index += 1
 
@@ -536,6 +537,9 @@ def display_plot(index):
 
     value_label.config(text=f"{index + 1} samples")
 
+def stop_run_thread():
+    thread_stop = threading.Thread(target=stop_run)
+    thread_stop.start()
 
 def stop_run():
     global stop_thread
@@ -558,7 +562,7 @@ def stop_run():
 
 
 def exit_run():
-    stop_run()
+    stop_run_thread()
     root.destroy()
     sys.exit(0)
 
@@ -694,7 +698,7 @@ if __name__ == '__main__':
     plot_button = ttk.Button(left_frame, text="Run", command=on_plot_button_click, width=12, bootstyle="primary-outline", state=tk.NORMAL)
     plot_button.pack(side='left', pady=20, expand=True)
 
-    stop_button = ttk.Button(left_frame, text="Stop", command=stop_run, width=12, bootstyle="warning-outline", state=tk.DISABLED)
+    stop_button = ttk.Button(left_frame, text="Stop", command=stop_run_thread, width=12, bootstyle="warning-outline", state=tk.DISABLED)
     stop_button.pack(side='left', pady=20, expand=True)
 
     doc_button = ttk.Button(left_frame, text="Log files", command=open_folder, width=12, bootstyle="dark-outline", state=tk.DISABLED)
