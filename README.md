@@ -5,7 +5,7 @@
 <img src="./assets/figs/logo.png" alt="LLM4AD Logo" style="width: 90%; height: auto;">
 </h1>
 <h1 align="center">
-LLM4AD: Large Language Model for Algorithm Design Platform
+LLM4AD: Large Language Model for Algorithm Design
 </h1>
 
 [![Releases](https://img.shields.io/badge/Release-v1.0-blue)](https://github.com/Optima-CityU/LLM4AD/releases)
@@ -48,13 +48,13 @@ For more information, see the [contact list](https://github.com/Optima-CityU/LLM
 
 | Feature                                                      | Support / To be supported |
 | ------------------------------------------------------------ | ------------------------- |
-| **Unified Interfaces** for methods                           | 🔥Support now              |
-| **Unified Interfaces** for tasks                             | 🔥Support now              |
-| **Unified Interfaces** for LLMs                              | 🔥Support now              |
-| **Evaluation acceleration:** multiprocessing evaluation, add Numba wrapper for heuristic | 🔥Support now              |
-| **Secure Evaluation:** main process protection, timeout interruption | 🔥Support now              |
-| **Logs:** local logs, Wandb and Tensorboard support          | 🔥Support now              |
-| **GUI:** methods selection, tasks selection, convergence, best algorithm, ... | 🔥Support now              |
+| **Unified Interfaces** for methods                           | 🔥Support            |
+| **Unified Interfaces** for tasks                             | 🔥Support             |
+| **Unified Interfaces** for LLMs                              | 🔥Support             |
+| **Evaluation acceleration:** multiprocessing evaluation, add Numba wrapper for heuristic | 🔥Support              |
+| **Secure Evaluation:** main process protection, timeout interruption | 🔥Support             |
+| **Logs:** local logs, Wandb and Tensorboard support          | 🔥Support             |
+| **GUI:** methods selection, tasks selection, convergence, best algorithm, ... | 🔥Support             |
 | **Resume run**                                               | 🚀Will be updated soon     |
 | Support other languages                                      | 🚀Will be updated soon     |
 | More search methods                                          | 🚀Will be updated soon     |
@@ -121,8 +121,8 @@ from llm4ad.method.eoh import EoH, EoHProfiler
 
 def main():
 
-    llm = HttpsApi(host="xxx",  # your host endpoint, e.g., api.openai.com/v1/completions, api.deepseek.com
-                   key="sk-xxx",  # your key, e.g., sk-abcdefghijklmn
+    llm = HttpsApi(host="xxx",  # your host endpoint, e.g., api.openai.com, api.deepseek.com
+                   key="sk-xxx",  # your key, e.g., sk-xxxxxxxxxx
                    model="xxx",  # your llm, e.g., gpt-3.5-turbo, deepseek-chat
                    timeout=20)
     
@@ -165,7 +165,7 @@ $ cd GUI
 $ python run_gui.py
 ```
 
-Check [GUI Introduction](https://llm4ad-doc.readthedocs.io/en/latest/gui/gui.html) for more information
+Check [GUI Introduction](https://llm4ad-doc.readthedocs.io/en/latest/getting_started/gui.html) for more information
 
 <img src="./assets/figs/gui.gif" alt="llm4ad" style="zoom:80%;" />
 
