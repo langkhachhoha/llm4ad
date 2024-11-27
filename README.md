@@ -14,6 +14,7 @@ LLM4AD: Large Language Model for Algorithm Design Platform
 ![Python](https://img.shields.io/badge/Python-3.9+-blue)
 [![License](https://img.shields.io/badge/License-MIT-important)](https://github.com/Optima-CityU/LLM4AD/blob/main/LICENSE)
 [![Documentation Status](https://readthedocs.org/projects/llm4ad-doc/badge/?version=latest)](https://llm4ad-doc.readthedocs.io/en/latest/?badge=latest)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Optima-CityU/llm4ad/blob/main/example/online_bin_packing/bin_packing_funsearch.ipynb)
 
 [Website](http://www.llm4ad.com/)
 | [Documentation](https://llm4ad-doc.readthedocs.io/en/latest/)
