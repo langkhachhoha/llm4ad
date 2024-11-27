@@ -14,5 +14,5 @@
 GUI/outputs
 **/*wandb*
 /.git
-
+/.gitignore
 /.gitattributes
