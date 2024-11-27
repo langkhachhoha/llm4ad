@@ -1,0 +1,30 @@
+[2024-11-27 13:08:58] profile.py(188) : ==================================LLM Parameters===============================
+[2024-11-27 13:08:58] profile.py(189) : LLM: HttpsApi
+[2024-11-27 13:08:58] profile.py(192) : do_auto_trim: True
+[2024-11-27 13:08:58] profile.py(192) : debug_mode: False
+[2024-11-27 13:08:58] profile.py(192) : _host: api.bltcy.ai
+[2024-11-27 13:08:58] profile.py(192) : _key: sk-z4tSPqfaQ74KBpTlFc4f7fC767D04603Be0696F7A8BcC7D8
+[2024-11-27 13:08:58] profile.py(192) : _model: gpt-4o-mini
+[2024-11-27 13:08:58] profile.py(192) : _timeout: 20
+[2024-11-27 13:08:58] profile.py(192) : _kwargs: {}
+[2024-11-27 13:08:58] profile.py(192) : _cumulative_error: 0
+[2024-11-27 13:08:58] profile.py(194) : ==================================Problem Parameters===============================
+[2024-11-27 13:08:58] profile.py(196) : Problem: OBPEvaluation
+[2024-11-27 13:08:58] profile.py(199) : task_description: Implement a function that returns the priority with which we want to add an item to each bin.
+[2024-11-27 13:08:58] profile.py(199) : use_numba_accelerate: False
+[2024-11-27 13:08:58] profile.py(199) : use_protected_div: False
+[2024-11-27 13:08:58] profile.py(199) : protected_div_delta: 1e-05
+[2024-11-27 13:08:58] profile.py(199) : random_seed: None
+[2024-11-27 13:08:58] profile.py(199) : timeout_seconds: 20
+[2024-11-27 13:08:58] profile.py(199) : exec_code: True
+[2024-11-27 13:08:58] profile.py(199) : safe_evaluate: True
+[2024-11-27 13:08:58] profile.py(199) : daemon_eval_process: False
+[2024-11-27 13:08:58] profile.py(201) : ==================================Method Parameters===============================
+[2024-11-27 13:08:58] profile.py(203) : Method: RandSample
+[2024-11-27 13:08:58] profile.py(206) : _max_sample_nums: 10
+[2024-11-27 13:08:58] profile.py(206) : _num_samplers: 1
+[2024-11-27 13:08:58] profile.py(206) : _num_evaluators: 1
+[2024-11-27 13:08:58] profile.py(206) : _debug_mode: False
+[2024-11-27 13:08:58] profile.py(206) : _resume_mode: False
+[2024-11-27 13:08:58] profile.py(206) : _function_to_evolve_name: priority
+[2024-11-27 13:08:58] profile.py(208) : ==================================End of Parameters===============================
