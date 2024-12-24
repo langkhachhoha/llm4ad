@@ -21,6 +21,7 @@ from llm4ad.gui import main_gui
 import threading
 import ttkbootstrap as ttk
 import subprocess
+import yaml
 
 ##########################################################
 
@@ -145,7 +146,7 @@ def show_algorithm_parameters(algo_name):
 
     algo_param_frame['text'] = f"{algo_name}"
 
-    required_parameters, value_type, default_value = get_required_parameters(path=f"../llm4ad/method/{algo_name}/{algo_name}.py")
+    required_parameters, value_type, default_value = get_required_parameters(path=f"../llm4ad/method/{algo_name}/paras.yaml")
     method_para_value_name_list = required_parameters
     method_para_value_type_list = value_type
     for i in range(len(required_parameters)):
@@ -173,7 +174,7 @@ def show_problem_parameters(problem_name):
 
     problem_param_frame['text'] = f"{problem_name}"
 
-    required_parameters, value_type, default_value = get_required_parameters(path=f"../llm4ad/task/{objectives_var.get()}/{problem_name}/evaluation.py")
+    required_parameters, value_type, default_value = get_required_parameters(path=f"../llm4ad/task/{objectives_var.get()}/{problem_name}/paras.yaml")
     problem_para_value_type_list = value_type
     problem_para_value_name_list = required_parameters
     for i in range(len(required_parameters)):
@@ -198,20 +199,16 @@ def get_required_parameters(path):
     value_type = []
     default_value = []
 
-    for line in open(path, "r",encoding="utf-8").readlines():
-        if line == '# end\n' or line[0] != '#':
-            break
-        if line[:13] == '# Parameters:':
-            continue
-        line = line[:-1]
-        line = line[2:]
-        line = line.split(": ")
-        required_parameters.append(line[0])
-        value_type.append(line[1])
-        if line[2] == '':
-            default_value.append(None)
+    with open(path, 'r', encoding='utf-8') as file:
+        data = yaml.safe_load(file)  # 使用 safe_load 读取 YAML 文件
+
+    for key, value in data.items():
+        required_parameters.append(key)
+        value_type.append(str(type(value)))
+        if value is None:
+            default_value.append(value)
         else:
-            default_value.append(line[2])
+            default_value.append(str(value))
 
     return required_parameters, value_type, default_value
 
@@ -362,14 +359,14 @@ def return_para():
 
     for i in range(len(method_para_entry_list)):
         method_para[method_para_value_name_list[i]] = method_para_entry_list[i].get()
-        if method_para_value_type_list[i] == 'int':
+        if method_para_value_type_list[i] == '<class \'int\'>':
             method_para[method_para_value_name_list[i]] = int(method_para_entry_list[i].get())
 
     method_para['num_samplers'] = method_para['num_evaluators']
 
     for i in range(len(problem_para_entry_list)):
         problem_para[problem_para_value_name_list[i]] = problem_para_entry_list[i].get()
-        if problem_para_value_type_list[i] == 'int':
+        if problem_para_value_type_list[i] == '<class \'int\'>':
             problem_para[problem_para_value_name_list[i]] = int(problem_para_entry_list[i].get())
 
     ####################

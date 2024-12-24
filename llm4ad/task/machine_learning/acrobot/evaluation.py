@@ -1,4 +1,4 @@
-# name: str: CarMountain
+# name: str: ACROBOT
 # Parameters:
 # max_steps: int: 500
 # end
