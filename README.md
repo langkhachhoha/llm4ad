@@ -26,7 +26,7 @@ LLM4AD: Large Language Model for Algorithm Design
 
 ## Introduction 📖
 
-LLM4AD is an open-source Python-based Platform leveraging **Large Language Models (LLMs)** for **Automatic Algorithm Design (AD)**. 
+LLM4AD is an open-source Python-based Platform leveraging **Large Language Models (LLMs)** for **Automatic Algorithm Design (AD)**. Please refer to the [paper](https://arxiv.org/pdf/2412.17287) [LLM4AD] for detailed information, including the overview, methodology, and benchmark results.
 
 LLM4AD is accomplished with [Documents](https://llm4ad-doc.readthedocs.io/en/latest/) and [Examples](https://github.com/Optima-CityU/LLM4AD/tree/main/example) materials to support users and developers to easily test, build and deploy their own LLM4AD applications and conduct research.
 
@@ -34,9 +34,11 @@ LLM4AD was originally developed for [optimisation tasks](https://llm4ad-doc.read
 
 For more information, see the [contact list](https://github.com/Optima-CityU/LLM4AD#Contact)
 
-<img src="./assets/figs/framework.png" alt="llm4ad" style="zoom:50%;" />
+<img src="./assets/figs/overview.png" alt="llm4ad" style="zoom:50%;" />
 
 ## 🔥 News 
+
++ 2024.12 🎉🎉 **LLM4AD paper Released ** [“LLM4AD: A Platform for Algorithm Design with Large Language Model"](https://arxiv.org/pdf/2412.17287) ! 
 
 + 2024.11 🎉🎉 **LLM4AD v1.0 Released**  ! 
 
@@ -233,7 +235,15 @@ This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE
 If you find LLM4AD helpful please cite:
 
 ```bibtex
-Coming soon
+@article{liu2024llm4ad,
+      title={LLM4AD: A Platform for Algorithm Design with Large Language Model}, 
+      author={Fei Liu and Rui Zhang and Zhuoliang Xie and Rui Sun and Kai Li and Xi Lin and Zhenkun Wang and Zhichao Lu and Qingfu Zhang},
+      year={2024},
+      eprint={2412.17287},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2412.17287}, 
+}
 ```
 
 

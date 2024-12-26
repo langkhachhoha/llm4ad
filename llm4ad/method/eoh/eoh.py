@@ -31,7 +31,7 @@ class EoH:
                  profiler: ProfilerBase = None,
                  max_generations: int | None = 10,
                  max_sample_nums: int | None = 100,
-                 pop_size: int = 20,
+                 pop_size: int = 0,
                  selection_num=2,
                  use_e2_operator: bool = True,
                  use_m1_operator: bool = True,
@@ -41,6 +41,7 @@ class EoH:
                  *,
                  resume_mode: bool = False,
                  initial_sample_num: int | None = None,
+                 initial_sample_nums_max: int = 50,
                  debug_mode: bool = False,
                  multi_thread_or_process_eval: str = 'thread',
                  **kwargs):
@@ -78,6 +79,7 @@ class EoH:
         self._num_evaluators = num_evaluators
         self._resume_mode = resume_mode
         self._initial_sample_num = initial_sample_num
+        self._initial_sample_nums_max = initial_sample_nums_max
         self._debug_mode = debug_mode
         self._multi_thread_or_process_eval = multi_thread_or_process_eval
 
@@ -108,6 +110,32 @@ class EoH:
             self._evaluation_executor = concurrent.futures.ProcessPoolExecutor(
                 max_workers=num_evaluators
             )
+
+        # reset _initial_sample_nums_max 
+        self._initial_sample_nums_max = max(self._initial_sample_nums_max,2*pop_size)
+
+        # adjust population size
+        if self._max_sample_nums >= 10000:
+            if self._pop_size == 0:
+                self._pop_size = 40
+            elif abs(self._pop_size-40)>20:
+                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 40." )
+        elif self._max_sample_nums >= 1000:
+            if self._pop_size == 0:
+                self._pop_size = 20
+            elif abs(self._pop_size-20)>10:
+                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 20." )
+        elif self._max_sample_nums >= 200:
+            if self._pop_size == 0:
+                self._pop_size = 10
+            elif abs(self._pop_size-10)>5:
+                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 10." )
+        else:
+            if self._pop_size == 0:
+                self._pop_size = 5
+            elif abs(self._pop_size-5)>5:
+                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 5." )
+
 
     def _sample_evaluate_register(self, prompt):
         """Sample a function using the given prompt -> evaluate it by submitting to the process/thread pool ->
@@ -233,9 +261,12 @@ class EoH:
                 # get a new func using i1
                 prompt = EoHPrompt.get_prompt_i1(self._task_description_str, self._function_to_evolve)
                 self._sample_evaluate_register(prompt)
+                if self._tot_sample_nums > self._initial_sample_nums_max:
+                    print(f"Warning: Initialization not accomplished in {self._initial_sample_nums_max} samples !!!")
+                    break
             except Exception as e:
                 if self._debug_mode:
-                    print(e)
+                    traceback.print_exc()
                     exit()
                 continue
 
