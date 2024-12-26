@@ -112,30 +112,29 @@ class EoH:
             )
 
         # reset _initial_sample_nums_max 
-        self._initial_sample_nums_max = max(self._initial_sample_nums_max,2*pop_size)
+        self._initial_sample_nums_max = max(self._initial_sample_nums_max, 2 * pop_size)
 
         # adjust population size
         if self._max_sample_nums >= 10000:
             if self._pop_size == 0:
                 self._pop_size = 40
-            elif abs(self._pop_size-40)>20:
-                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 40." )
+            elif abs(self._pop_size - 40) > 20:
+                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 40.")
         elif self._max_sample_nums >= 1000:
             if self._pop_size == 0:
                 self._pop_size = 20
-            elif abs(self._pop_size-20)>10:
-                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 20." )
+            elif abs(self._pop_size - 20) > 10:
+                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 20.")
         elif self._max_sample_nums >= 200:
             if self._pop_size == 0:
                 self._pop_size = 10
-            elif abs(self._pop_size-10)>5:
-                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 10." )
+            elif abs(self._pop_size - 10) > 5:
+                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 10.")
         else:
             if self._pop_size == 0:
                 self._pop_size = 5
-            elif abs(self._pop_size-5)>5:
-                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 5." )
-
+            elif abs(self._pop_size - 5) > 5:
+                print(f"Warning: population size {self._pop_size} is not suitable, please reset it to 5.")
 
     def _sample_evaluate_register(self, prompt):
         """Sample a function using the given prompt -> evaluate it by submitting to the process/thread pool ->

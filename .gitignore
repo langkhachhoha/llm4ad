@@ -15,5 +15,4 @@ GUI/outputs
 **/*wandb*
 **/test
 /.git
-/.gitignore
 /.gitattributes
