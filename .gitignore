@@ -12,7 +12,7 @@
 **/samples*
 **/sample2pkl.py
 GUI/outputs
-**/*wandb*
+**/wandb
 **/test
 /.git
 /.gitattributes
