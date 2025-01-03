@@ -38,7 +38,7 @@ For more information, see the [contact list](https://github.com/Optima-CityU/LLM
 
 ## 🔥 News 
 
-+ 2024.12 🎉🎉 **LLM4AD paper Released ** [“LLM4AD: A Platform for Algorithm Design with Large Language Model"](https://arxiv.org/pdf/2412.17287) ! 
++ 2024.12 🎉🎉 **LLM4AD paper Released** [“LLM4AD: A Platform for Algorithm Design with Large Language Model"](https://arxiv.org/pdf/2412.17287) ! 
 
 + 2024.11 🎉🎉 **LLM4AD v1.0 Released**  ! 
 
@@ -267,7 +267,7 @@ If you are interested in LLM4AD or if you encounter any difficulty using the pla
 
 2. Visit our collection [a collection of resources and research papers on LLM4AD](https://github.com/FeiLiu36/LLM4Opt)
 
-3. Visit discussions to connect with other members of our community
+3. Visit [Discussions](https://github.com/Optima-CityU/llm4ad/discussions) to connect with other members of our community
 
 4. Join our QQ Group
 
@@ -301,6 +301,5 @@ Thank you for contributing to LLM4AD and welcome to being part of the LLM4AD com
      <td align="center" valign="top" width="12.5%"><a href="https://github.com/RayZhhh"><img src="https://avatars.githubusercontent.com/RayZhhh" width="50px;" alt="Rui Zhang"/><br /><sub><b>Rui Zhang</b></sub>
         </td>
     </tr>
-
 
 
