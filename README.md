@@ -252,9 +252,9 @@ If you find LLM4AD helpful please cite:
 
 This platform is developed and maintained by LLM4AD developer group from the City University of Hong Kong (CityUHK) and the Southern University of Science and Technology (SUSTech). We develop LLM4AD platform for research purposes and hope to contribute to the research area by delivering tools for LLM-based algorithm design methods.
 
-+ **Contribution:** We are more than welcome to contribute including developing code and ideas to improve our platform.
++ **Contribution:** We are more than welcome to contribute (see our 📖 [contribution guide](https://github.com/Optima-CityU/llm4ad/tree/main/assets/contribution.md)) including developing code and ideas to improve our platform.
 + **Collaborations:** If you like our platform, and you would like to use it for profit-making purposes? We are always searching for industrial collaborations because they help direct research to meet the industry’s needs.
-+ **Issue:** If you find a bug or you have any kind of concern regarding the correctness, please report us an issue.
++ **Issue:** If you find a bug or you have any kind of concern regarding the correctness, please report us an [issue](https://github.com/Optima-CityU/llm4ad/issues).
 + **Profit Purpose:** If you intend to use LLM4AD for any profit-making purposes, please contact [us](http://www.llm4ad.com/contact.html).
 
 
@@ -267,13 +267,40 @@ If you are interested in LLM4AD or if you encounter any difficulty using the pla
 
 2. Visit our collection [a collection of resources and research papers on LLM4AD](https://github.com/FeiLiu36/LLM4Opt)
 
-3. Join our QQ Group
+3. Visit discussions to connect with other members of our community
+
+4. Join our QQ Group
 
    <img src="./assets/figs/qq.png" alt="LLM4AD Logo" style="width: 30%; height: auto;">
 
-4. Contact us through email fliu36-c@my.cityu.edu.hk
+5. Contact us through email fliu36-c@my.cityu.edu.hk
 
-5. Submit an [issue](https://github.com/Optima-CityU/LLM4AD)
+6. Submit an [issue](https://github.com/Optima-CityU/LLM4AD)
+
+
+
+## Contributors
+
+Any new ideas, features, and improvements are welcomed!
+
+You can contribute to LLM4AD follow our 📖 [Contribution Guide](https://github.com/Optima-CityU/llm4ad/tree/main/assets/contribution.md).
+
+Thank you for contributing to LLM4AD and welcome to being part of the LLM4AD community! :sparkles:
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="12.5%"><a href="https://github.com/FeiLiu36"><img src="https://avatars.githubusercontent.com/FeiLiu36" width="50px;" alt="Fei Liu"/><br /><sub><b>Fei Liu</b></sub></td>
+<td align="center" valign="top" width="12.5%"><a href="https://ahalikai.github.io/"><img src="https://github.com/Ahalikai/Ahalikai.github.io/blob/main/Aha.jpg?raw=true" width="50px;" alt="Kai Li"/><br /><sub><b>Kai Li</b></sub>
+        </td>
+      <td align="center" valign="top" width="12.5%"><a href="https://github.com/SunnyR7"><img src="https://avatars.githubusercontent.com/SunnyR7" width="50px;" alt="Rui Sun"/><br /><sub><b>Rui Sun</b></sub></td>
+      <td align="center" valign="top" width="12.5%"><a href="https://github.com/Acquent0"><img src="https://avatars.githubusercontent.com/Acquent0" width="50px;" alt="Julian XIE"/><br  /><sub><b>Julian XIE</b></sub>
+        </td>
+ <td align="center" valign="top" width="12.5%"><a href="https://github.com/ShunyuYao6"><img src="https://avatars.githubusercontent.com/ShunyuYao6" width="50px;" alt="Shunyu Yao"/><br /><sub><b>Shunyu Yao</b></sub>
+        </td>
+     <td align="center" valign="top" width="12.5%"><a href="https://github.com/RayZhhh"><img src="https://avatars.githubusercontent.com/RayZhhh" width="50px;" alt="Rui Zhang"/><br /><sub><b>Rui Zhang</b></sub>
+        </td>
+    </tr>
 
 
 
