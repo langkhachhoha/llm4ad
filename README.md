@@ -257,7 +257,8 @@ This platform is developed and maintained by LLM4AD developer group from the Cit
 + **Issue:** If you find a bug or you have any kind of concern regarding the correctness, please report us an [issue](https://github.com/Optima-CityU/llm4ad/issues).
 + **Profit Purpose:** If you intend to use LLM4AD for any profit-making purposes, please contact [us](http://www.llm4ad.com/contact.html).
 
-
+## :star: Star Trends
+[![Star History Chart](https://api.star-history.com/svg?repos=Optima-CityU/llm4ad&type=Date)](https://star-history.com/#Optima-CityU/llm4ad&Date)
 
 ## Contact
 
