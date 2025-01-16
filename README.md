@@ -175,16 +175,16 @@ Check [GUI Introduction](https://llm4ad-doc.readthedocs.io/en/latest/getting_sta
 
 | Methods                                               | Paper title                                                  |
 | ----------------------------------------------------- | ------------------------------------------------------------ |
-| RandomSampling                                        | Understanding the Importance of Evolutionary Search in Automated Heuristic Design with Large Language Models (PPSN 2024) |
-| FunSearch                                             | Mathematical Discoveries from Program Search with Large Language Models (Nature 2023) |
-| EoH<font color=red>*</font>                           | Evolution of Heuristics: Towards Efficient Automatic Algorithm Design Using Large Language Model (ICML 2024) |
-| (1+1)-EPS<font color=red>*</font> <br/>(HillClimbing) | Understanding the Importance of Evolutionary Search in Automated Heuristic Design with Large Language Models (PPSN 2024) |
+| **AEL** (Preliminary Version of **EoH**)        | [Algorithm Evolution using Large Language Model](https://arxiv.org/abs/2311.15249) (Arxiv 2023) |
+| **EoH**        | [Evolution of Heuristics: Towards Efficient Automatic Algorithm Design Using Large Language Model](https://openreview.net/pdf?id=BwAkaxqiLB) (ICML 2024) |
+| **FunSearch**                                             | [Mathematical Discoveries from Program Search with Large Language Models](https://www.nature.com/articles/s41586-023-06924-6) (Nature 2024) |
+| **RandomSampling**                                        | [Understanding the Importance of Evolutionary Search in Automated Heuristic Design with Large Language Models](https://arxiv.org/abs/2407.10873) (PPSN 2024) |
+| **(1+1)-EPS** <br/>(HillClimbing) | [Understanding the Importance of Evolutionary Search in Automated Heuristic Design with Large Language Models](https://arxiv.org/abs/2407.10873) (PPSN 2024) |
 | RegEvo                                                | coming soon                                                 |
 | Neighborhood search methods                           | coming soon                                                 |
 | Multi-objective search methods                        | coming soon                                                 |
 | Others                                                | coming soon                                                 |
 
-<font color=red>*</font>The implementation has some minor differences from the original method (demonstrated in their original paper), considering generality and multithreading acceleration.
 
 ## 📦LLM4AD Algorithm Design Tasks 
 
