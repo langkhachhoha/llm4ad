@@ -235,7 +235,9 @@ class SecureEvaluator:
                 # return evaluate result and evaluate time
                 return result, time.time() - evaluate_start
             else:
-                return self._evaluate(program_str, function_name)
+                start = time.time()
+                score = self._evaluate(program_str, function_name)
+                return score, time.time() - start
         except Exception as e:
             if self._debug_mode:
                 print(e)
