@@ -45,8 +45,9 @@ def run_test():
     for t in range(500):
         # action = np.random.choice([0, 1, 2])  # 动作
         action = choose_action(observation[0], observation[1], action)
-        observation, reward, done, truncated, info = env.step(action)
-        print(f"step: {t}")
+        action = np.random.random()
+        observation, reward, done, truncated, info = env.step([action])
+        print(f"step: {t}, action: {action}, reward: {reward}, done: {done}, truncated: {truncated}, info: {info}")
         # print(action, reward, done)
         # print(observation)
         env.render()

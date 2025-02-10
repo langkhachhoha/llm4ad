@@ -8,7 +8,7 @@ from typing import Any
 import gym
 
 from llm4ad.base import Evaluation
-from llm4ad.task.machine_learning.car_mountain.template import template_program, task_description
+from llm4ad.task.machine_learning.car_mountain_continue.template import template_program, task_description
 
 __all__ = ['CarMountainContinuous']
 
@@ -20,7 +20,7 @@ def evaluate(env: gym.Env, action_select: callable) -> float:
 
     for i in range(env._max_episode_steps):
         action = action_select(observation[0], observation[1], action)
-        observation, reward, done, truncated, info = env.step(action)
+        observation, reward, done, truncated, info = env.step([action])
 
         if done:
             return -(i / env._max_episode_steps)  # succeed
