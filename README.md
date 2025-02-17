@@ -189,23 +189,30 @@ Check [GUI Introduction](https://llm4ad-doc.readthedocs.io/en/latest/getting_sta
 ## 📦LLM4AD Algorithm Design Tasks 
 
 
-| Area              | Algorithm Task                                               | Paper                                             |
-| ----------------- | ------------------------------------------------------------ | ------------------------------------------------- |
-| Optimization      | [Online Bin Packing, Constructive heuristic]                 | [paper](https://openreview.net/pdf?id=BwAkaxqiLB) |
-|                   | [Traveling Salesman Problem (TSP), Construct heuristic](https://llm4ad-doc.readthedocs.io/en/latest/task/optimization/tsp_construct.html) | [paper](https://arxiv.org/pdf/2311.15249)         |
-|                   | Traveling Salesman Problem (TSP), Guided local search        | [paper](https://openreview.net/pdf?id=BwAkaxqiLB) |
-|                   | Flow Shop Scheduling Problem (FSSP), Guided local search     | [paper](https://openreview.net/pdf?id=BwAkaxqiLB) |
-|                   | Bayesian Optimization, Cost-aware Acquisition Function Design | [paper](https://arxiv.org/abs/2404.16906)         |
-| Machine Learning  | Adversarial Attack, Attack strategy                          | [paper](https://arxiv.org/abs/2401.15335)         |
-|                   | [Acrobot, Heuristic (Agent)](https://llm4ad-doc.readthedocs.io/en/latest/task/machine_learning/acrobot.html) |                                                   |
-|                   | [Cart Pole, Heuristic (Agent)](https://llm4ad-doc.readthedocs.io/en/latest/task/machine_learning/car_pole.html) |                                                   |
-|                   | [Mountain Car, Heuristic (Agent)](https://llm4ad-doc.readthedocs.io/en/latest/task/machine_learning/mountain_car.html) |                                                   |
-| Science Discovery | Computational fluid dynamics, Turbulence model design        | [paper](https://arxiv.org/pdf/2410.10657)         |
-|                   | [Bacteria Growth, Function](https://llm4ad-doc.readthedocs.io/en/latest/task/science_discovery/bacteria_grow.html) |                                                   |
-|                   | [Oscillator, Equation](https://llm4ad-doc.readthedocs.io/en/latest/task/science_discovery/oscillator1.html) |                                                   |
-|                   | [Stress & Strain, Equation](https://llm4ad-doc.readthedocs.io/en/latest/task/science_discovery/stress_strain.html) |                                                   |
-| Math              | Admissible Sets                                              | [paper](https://www.nature.com/articles/s41586-023-06924-6)                                                  |
-| coming soon ...   |                                                              |                                                   |
+| Area              | Algorithm Task                                               | Paper                                                       |
+| ----------------- | ------------------------------------------------------------ | ----------------------------------------------------------- |
+| Optimization      | [Online Bin Packing, Constructive heuristic]                 | [paper](https://openreview.net/pdf?id=BwAkaxqiLB)           |
+|                   | [Traveling Salesman Problem (TSP), Construct heuristic](https://llm4ad-doc.readthedocs.io/en/latest/task/optimization/tsp_construct.html) | [paper](https://arxiv.org/pdf/2311.15249)                   |
+|                   | Traveling Salesman Problem (TSP), Guided local search        | [paper](https://openreview.net/pdf?id=BwAkaxqiLB)           |
+|                   | 1-dimensional Bin Packing (BP1D), Construct heuristic        | paper                                                       |
+|                   | 2-dimensional Bin Packing (BP2D), Construct heuristic        | paper                                                       |
+|                   | Capacitated Facility Location Problem (CFLP), Construct heuristic | paper                                                       |
+|                   | Knapsack Problem (KP), Construct heuristic                   | paper                                                       |
+|                   | Quadratic Assignment Problem (QAP), Construct heuristic      | paper                                                       |
+|                   | Set Cover Problem (SCP), Construct heuristic                 | paper                                                       |
+|                   | Flow Shop Scheduling Problem (FSSP), Construct heuristic     | paper                                                       |
+|                   | Flow Shop Scheduling Problem (FSSP), Guided local search     | [paper](https://openreview.net/pdf?id=BwAkaxqiLB)           |
+|                   | Bayesian Optimization, Cost-aware Acquisition Function Design | [paper](https://arxiv.org/abs/2404.16906)                   |
+| Machine Learning  | Adversarial Attack, Attack strategy                          | [paper](https://arxiv.org/abs/2401.15335)                   |
+|                   | [Acrobot, Heuristic (Agent)](https://llm4ad-doc.readthedocs.io/en/latest/task/machine_learning/acrobot.html) |                                                             |
+|                   | [Cart Pole, Heuristic (Agent)](https://llm4ad-doc.readthedocs.io/en/latest/task/machine_learning/car_pole.html) |                                                             |
+|                   | [Mountain Car, Heuristic (Agent)](https://llm4ad-doc.readthedocs.io/en/latest/task/machine_learning/mountain_car.html) |                                                             |
+| Science Discovery | Computational fluid dynamics, Turbulence model design        | [paper](https://arxiv.org/pdf/2410.10657)                   |
+|                   | [Bacteria Growth, Function](https://llm4ad-doc.readthedocs.io/en/latest/task/science_discovery/bacteria_grow.html) |                                                             |
+|                   | [Oscillator, Equation](https://llm4ad-doc.readthedocs.io/en/latest/task/science_discovery/oscillator1.html) |                                                             |
+|                   | [Stress & Strain, Equation](https://llm4ad-doc.readthedocs.io/en/latest/task/science_discovery/stress_strain.html) |                                                             |
+| Math              | Admissible Sets                                              | [paper](https://www.nature.com/articles/s41586-023-06924-6) |
+| coming soon ...   |                                                              |                                                             |
 
 
 
