@@ -10,7 +10,7 @@ import itertools
 from typing import Any
 import numpy as np
 
-# this line will proceed for about 10s to get all feynman equation.--
+# this line will proceed for about 10s to get all feynman equation.
 from llm4ad.task.science_discovery.feynman_srsd.feynman_equations import FEYNMAN_EQUATION_CLASS_List
 
 from llm4ad.base import Evaluation
