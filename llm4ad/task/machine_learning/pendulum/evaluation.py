@@ -63,7 +63,7 @@ def evaluate_single(env: gym.Env, action_select: callable) -> float:
 class Pendulum(Evaluation):
     """Evaluator for the pendulum swing-up problem."""
 
-    def __init__(self, max_steps=500, **kwargs):
+    def __init__(self, max_steps=500, timeout_seconds=20, **kwargs):
         """
             Args:
                 - 'max_steps' (int): Maximum number of steps allowed per episode in the Pendulum-v1 environment (default is 200).
