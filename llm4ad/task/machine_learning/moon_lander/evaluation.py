@@ -59,7 +59,7 @@ def evaluate_single(env: gym.Env, action_select: callable) -> float:
 class MoonLander(Evaluation):
     """Evaluator for moon lander problem."""
 
-    def __init__(self, max_steps=500, **kwargs):
+    def __init__(self, max_steps=500, timeout_seconds=20, **kwargs):
         """
             Args:
                 - 'max_steps' (int): Maximum number of steps allowed per episode in the MountainCar-v0 environment (default is 500).

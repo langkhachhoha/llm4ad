@@ -16,7 +16,7 @@ def evaluate(env: gym.Env, action_select: callable) -> float:
     """Evaluate heuristic function on car mountain problem."""
 
     observation, _ = env.reset()  # initialization
-    action = [0]  # initial action, stay static
+    action = 0  # initial action, stay static
 
     for i in range(env._max_episode_steps):
         action = action_select(observation[0], observation[1], action)
@@ -32,7 +32,7 @@ def evaluate(env: gym.Env, action_select: callable) -> float:
 class CarMountainContinuous(Evaluation):
     """Evaluator for car mountain problem."""
 
-    def __init__(self, max_steps=500, **kwargs):
+    def __init__(self, max_steps=500, timeout_seconds=20, **kwargs):
         """
             Args:
                 - 'max_steps' (int): Maximum number of steps allowed per episode in the MountainCar-v0 environment (default is 500).
@@ -54,4 +54,8 @@ class CarMountainContinuous(Evaluation):
         self.env._max_episode_steps = max_steps
 
     def evaluate_program(self, program_str: str, callable_func: callable) -> Any | None:
+        try:
+            a = evaluate(self.env, callable_func)
+        except Exception as e:
+            print(e)
         return evaluate(self.env, callable_func)
