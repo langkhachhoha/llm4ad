@@ -205,6 +205,7 @@ class TextFunctionProgramConverter:
         except:
             return None
 
+
     @classmethod
     def text_to_function(cls, program_str: str) -> Function | None:
         """Returns Function object by parsing input text using Python AST.
@@ -268,3 +269,51 @@ class TextFunctionProgramConverter:
             raise value_err
         except:
             return None
+        
+
+if __name__ == '__main__':
+    import textwrap
+
+
+    source_code = textwrap.dedent('''
+    import numpy as np
+    def select_next_node(current_node: int, destination_node: int, unvisited_nodes: np.ndarray, distance_matrix: np.ndarray) -> int: 
+        """
+        Design a novel algorithm to select the next node in each step.
+
+        Args:
+        current_node: ID of the current node.
+        destination_node: ID of the destination node.
+        unvisited_nodes: Array of IDs of unvisited nodes.
+        distance_matrix: Distance matrix of nodes.
+
+        Return:
+        ID of the next node to visit.
+        """
+        next_node = unvisited_nodes[0]
+
+        return next_node
+                                  
+    def func(a: np.ndarray, b: np.ndarray) -> np.ndarray:
+        b = b + WEIGHT
+        return a + b
+                                  
+    def func(a: np.ndarray, b: np.ndarray) -> np.ndarray:
+        b = b + WEIGHT
+        return a + b
+    ''') 
+
+    program = TextFunctionProgramConverter.text_to_program(source_code)
+
+    print("Preface (before first function):")
+    print(program.preface)
+    # print(program)
+
+    print("\nFunctions:")
+    for func in program.functions:
+        print(func)
+
+
+
+        
+

@@ -1,0 +1,11 @@
+numpy<2
+tensorboard
+scipy
+tqdm
+requests
+openai
+pytz
+matplotlib
+python-docx
+gym
+ttkbootstrap

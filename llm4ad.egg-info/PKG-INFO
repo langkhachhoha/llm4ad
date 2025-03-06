@@ -1,0 +1,22 @@
+Metadata-Version: 2.2
+Name: llm4ad
+Version: 1.0
+Summary: Large Language Model for Algorithm Design Platform 
+Author: Optima
+Requires-Python: >=3.9,<=3.11
+License-File: LICENSE
+Requires-Dist: numpy<2
+Requires-Dist: tensorboard
+Requires-Dist: scipy
+Requires-Dist: tqdm
+Requires-Dist: requests
+Requires-Dist: openai
+Requires-Dist: pytz
+Requires-Dist: matplotlib
+Requires-Dist: python-docx
+Requires-Dist: gym
+Requires-Dist: ttkbootstrap
+Dynamic: author
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary

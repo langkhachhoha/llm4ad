@@ -11,3 +11,4 @@ pandas
 gym
 matplotlib
 ttkbootstrap
+google-genai 

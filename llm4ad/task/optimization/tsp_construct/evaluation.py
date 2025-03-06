@@ -56,7 +56,7 @@ def evaluate(instance_data,n_ins,prob_size, eva: callable) -> float:
 
             unvisited_near_nodes = near_nodes[mask]
 
-            next_node = eva(current_node, destination_node, unvisited_near_nodes, distance_matrix)
+            next_node = eva(current_node, destination_node, unvisited_near_nodes, distance_matrix)   
 
             if next_node in route:
                 # print("wrong algorithm select duplicate node, retrying ...")
