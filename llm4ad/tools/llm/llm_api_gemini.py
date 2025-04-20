@@ -7,6 +7,12 @@ from llm4ad.base import LLM
 
 
 class HttpsApiGemini(LLM):
+    """Https API
+    Args:
+        api_key: API key.
+        model  : LLM model name.
+        timeout: API timeout.
+    """
     def __init__(self, api_key: str, model: str, timeout=30, **kwargs):
         super().__init__()
         self._model = model
