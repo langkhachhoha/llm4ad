@@ -87,7 +87,7 @@ def evaluate(instance_data,n_ins,prob_size, eva: callable) -> float:
 
     ave_dis = np.average(dis)
     # print("average dis: ",ave_dis)
-    return -ave_dis
+    return ave_dis
 
 
 class TSPEvaluation(Evaluation):
@@ -110,7 +110,7 @@ class TSPEvaluation(Evaluation):
             timeout_seconds=20
         )
 
-        self.n_instance = 16
+        self.n_instance = 8
         self.problem_size = 50
         getData = GetData(self.n_instance, self.problem_size)
         self._datasets = getData.generate_instances()
@@ -146,3 +146,6 @@ if __name__ == '__main__':
     
     tsp = TSPEvaluation()
     tsp.evaluate_program('_',select_next_node)
+
+
+

@@ -43,7 +43,7 @@ class EoH:
                  initial_sample_num: int | None = None,
                  initial_sample_nums_max: int = 50,
                  debug_mode: bool = False,
-                 multi_thread_or_process_eval: str = 'thread',
+                 multi_thread_or_process_eval: str = 'process',
                  **kwargs):
         """
         Args:
