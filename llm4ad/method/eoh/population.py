@@ -43,24 +43,21 @@ class Population:
         # in population initialization, we only accept valid functions
         if self._generation == 0 and func.score is None:
             return
-        # if the score is None, we still put it into the population,
-        # we set the score to '-inf'
         if func.score is None:
-            func.score = float('-inf')
+            return
         try:
             self._lock.acquire()
-            if self.has_duplicate_function(func):
-                func.score = float('-inf')
             # register to next_gen
             self._next_gen_pop.append(func)
             # update: perform survival if reach the pop size
             if len(self._next_gen_pop) >= self._pop_size:
                 pop = self._population + self._next_gen_pop
-                pop = sorted(pop, key=lambda f: f.score, reverse=True)
+                pop = sorted(pop, key=lambda f: f.score[0])
                 self._population = pop[:self._pop_size]
                 self._next_gen_pop = []
                 self._generation += 1
         except Exception as e:
+            print(e)
             return
         finally:
             self._lock.release()
@@ -75,9 +72,15 @@ class Population:
         return False
 
     def selection(self) -> Function:
-        funcs = [f for f in self._population if not math.isinf(f.score)]
-        func = sorted(funcs, key=lambda f: f.score, reverse=True)
-        p = [1 / (r + len(func)) for r in range(len(func))]
-        p = np.array(p)
-        p = p / np.sum(p)
-        return np.random.choice(func, p=p)
+        try:
+            funcs = [f for f in self._population if f.score is not None]
+            func = sorted(funcs, key=lambda f: f.score[0])
+            p = [1 / (r + len(func)) for r in range(len(func))]
+            p = np.array(p)
+            p = p / np.sum(p)
+            return np.random.choice(func, p=p)
+        except Exception as e:
+            print(e)
+            return
+
+

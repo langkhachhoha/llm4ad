@@ -54,7 +54,7 @@ class EoHProfiler(ProfilerBase):
                 funcs_json.append(f_json)
             path = os.path.join(self._ckpt_dir, f'pop_{pop.generation}.json')
             with open(path, 'w') as json_file:
-                json.dump(funcs_json, json_file, indent=4)
+                json.dump(funcs_json, json_file, indent=5)
             self.__class__._cur_gen += 1
         finally:
             if self._pop_lock.locked():
@@ -100,7 +100,7 @@ class EoHProfiler(ProfilerBase):
         data.append(content)
 
         with open(path, 'w') as json_file:
-            json.dump(data, json_file, indent=4)
+            json.dump(data, json_file, indent=5)
 
 
 
