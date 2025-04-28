@@ -121,13 +121,6 @@ class ProfilerBase:
         evaluate_time = function.evaluate_time
         score = function.score
 
-        # update best function
-        if score is not None and score > self._cur_best_program_score:
-            self._cur_best_function = function
-            self._cur_best_program_score = score
-            self._cur_best_program_sample_order = self.__class__._num_samples
-            self._write_json(function, record_type='best')
-
         if not resume_mode:
             # log attributes of the function
             if self._log_style == 'complex':
@@ -138,8 +131,6 @@ class ProfilerBase:
                 print(f'Sample time  : {str(sample_time)}')
                 print(f'Evaluate time: {str(evaluate_time)}')
                 print(f'Sample orders: {str(self.__class__._num_samples)}')
-                print(f'------------------------------------------------------')
-                print(f'Current best score: {self._cur_best_program_score}')
                 print(f'======================================================\n')
             else:
                 if score is None:

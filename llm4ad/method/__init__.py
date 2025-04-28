@@ -1,4 +1,4 @@
-from . import funsearch, hillclimb, randsample, eoh
+from . import funsearch, eoh, MEoH
 import os
 import inspect
 import importlib

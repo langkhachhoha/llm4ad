@@ -7,8 +7,6 @@ from threading import Lock
 
 from .programs_database import ProgramsDatabase
 from ...tools.profiler import ProfilerBase
-from ...tools.profiler import TensorboardProfiler
-from ...tools.profiler import WandBProfiler
 
 
 class FunSearchProfiler(ProfilerBase):
@@ -64,72 +62,3 @@ class FunSearchProfiler(ProfilerBase):
             if self._db_lock.locked():
                 self._db_lock.release()
 
-
-class FunSearchTensorboardProfiler(TensorboardProfiler, FunSearchProfiler):
-    _prog_db_order = 0
-
-    def __init__(
-            self,
-            log_dir: str | None = None,
-            evaluation_name='Problem',
-            method_name='FunSearch',
-            *,
-            initial_num_samples=0,
-            program_db_register_interval: int = 100,
-            log_style='complex',
-            **kwargs):
-        """
-        Args:
-            log_dir: log file path
-            program_db_register_interval: log the ProgramDB after getting N samples each time
-        """
-        FunSearchProfiler.__init__(self, log_dir=log_dir,
-                                   evaluation_name=evaluation_name,
-                                   method_name=method_name,
-                                   program_db_register_interval=program_db_register_interval,
-                                   log_style=log_style,
-                                   **kwargs)
-        TensorboardProfiler.__init__(self, log_dir=log_dir,
-                                     evaluation_name=evaluation_name,
-                                     method_name=method_name,
-                                     initial_num_samples=initial_num_samples,
-                                     log_style=log_style,
-                                     **kwargs)
-
-
-class FunSearchWandbProfiler(WandBProfiler, FunSearchProfiler):
-    _prog_db_order = 0
-
-    def __init__(
-            self,
-            wandb_project_name: str,
-            log_dir: str | None = None,
-            evaluation_name='Problem',
-            method_name='FunSearch',
-            *,
-            initial_num_samples=0,
-            program_db_register_interval: int = 100,
-            log_style='complex',
-            **kwargs):
-        """
-        Args:
-            wandb_project_name: wandb project name
-            log_dir: log file path
-            program_db_register_interval: log the ProgramDB after getting N samples each time
-        """
-        FunSearchProfiler.__init__(self,
-                                   log_dir=log_dir,
-                                   evaluation_name=evaluation_name,
-                                   method_name=method_name,
-                                   program_db_register_interval=program_db_register_interval,
-                                   initial_num_samples=initial_num_samples,
-                                   log_style=log_style,
-                                   **kwargs)
-        WandBProfiler.__init__(self,
-                               wandb_project_name=wandb_project_name,
-                               log_dir=log_dir,
-                               evaluation_name=evaluation_name,
-                               method_name=method_name,
-                               initial_num_samples=initial_num_samples,
-                               log_style=log_style,
-                               **kwargs)
