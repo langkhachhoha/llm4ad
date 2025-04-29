@@ -1,11 +1,10 @@
-from llm4ad.task.optimization.bi_tsp_semo import BITSPEvaluation
+from llm4ad.task.optimization.bi_kp import BIKPEvaluation
 from llm4ad.tools.llm.llm_api_https import HttpsApi
 from llm4ad.tools.llm.llm_api_gemini import HttpsApiGemini 
 from llm4ad.tools.llm.llm_api_openai import HttpsApiOpenAI
 from llm4ad.tools.profiler import ProfilerBase
-from llm4ad.method.LLMPFG import EoH
-from llm4ad.method.LLMPFG import EoHProfiler
-
+from llm4ad.method.eoh import EoH
+from llm4ad.method.eoh import EoHProfiler
 
 
 
@@ -25,22 +24,21 @@ def main():
     #                         model='gpt-3.5-turbo',
     #                         timeout=30
     #                         )
-    task = BITSPEvaluation()
+    task = BIKPEvaluation()
 
     method = EoH(llm=llm,
                  profiler=EoHProfiler(log_dir='logs', log_style='complex'),
                  evaluation=task,
-                 max_sample_nums=100,
-                 max_generations=10,
+                 max_sample_nums=20,
+                 max_generations=5,
                  pop_size=2,
                  num_samplers=1,
-                 num_evaluators=1,
-                 llm_review=True
-                 )
+                 num_evaluators=1)
 
     method.run()
 
 
 if __name__ == '__main__':
     main()
+
 

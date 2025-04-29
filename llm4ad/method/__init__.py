@@ -1,4 +1,4 @@
-from . import funsearch, eoh, MEoH
+from . import eoh, MEoH
 import os
 import inspect
 import importlib

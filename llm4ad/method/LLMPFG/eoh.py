@@ -195,6 +195,7 @@ class EoH:
                 suggest_prompt = EoHPrompt.get_prompt_suggestions_only(self._task_description_str, indivs, self._function_to_evolve)
                 if self.review:
                     suggestions = self._sampler.get_thought(suggest_prompt)
+                    print(suggestions)
                     prompt = EoHPrompt.get_prompt_e1(self._task_description_str, indivs, self._function_to_evolve, suggestions)
                 else:
                     prompt = EoHPrompt.get_prompt_e1(self._task_description_str, indivs, self._function_to_evolve)

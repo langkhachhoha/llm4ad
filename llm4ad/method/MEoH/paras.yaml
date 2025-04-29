@@ -1,5 +1,7 @@
-name: EoH
+name: MEoH
 max_generations: 10
 max_sample_nums: 20
 pop_size: 5
 num_evaluators: 4
+
+

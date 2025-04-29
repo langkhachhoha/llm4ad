@@ -1,4 +1,4 @@
-name: EoH
+name: LLMPFG
 max_generations: 10
 max_sample_nums: 20
 pop_size: 5

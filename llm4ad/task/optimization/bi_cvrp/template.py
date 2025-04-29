@@ -15,7 +15,7 @@ def select_neighbor(
 
     Args:
     archive: List of (solution, objective) pairs. Each solution is a numpy array of node IDs.
-             Each objective is a tuple of two float values (negative_hypervolume, time_to_finish).
+             Each objective is a tuple of two float values.
     instance: Numpy array of shape (N, 4). Each row corresponds to a node and contains its coordinates in two 2D spaces: (x1, y1, x2, y2).
     distance_matrix_1: Distance matrix in the first objective space.
     distance_matrix_2: Distance matrix in the second objective space.

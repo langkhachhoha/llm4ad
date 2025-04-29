@@ -1,8 +1,7 @@
-from llm4ad.task.optimization.bi_tsp_semo import BITSPEvaluation
+from llm4ad.task.optimization.tri_tsp_semo import TRITSPEvaluation
 from llm4ad.tools.llm.llm_api_https import HttpsApi
 from llm4ad.tools.llm.llm_api_gemini import HttpsApiGemini 
 from llm4ad.tools.llm.llm_api_openai import HttpsApiOpenAI
-from llm4ad.tools.profiler import ProfilerBase
 from llm4ad.method.LLMPFG import EoH
 from llm4ad.method.LLMPFG import EoHProfiler
 
@@ -25,7 +24,7 @@ def main():
     #                         model='gpt-3.5-turbo',
     #                         timeout=30
     #                         )
-    task = BITSPEvaluation()
+    task = TRITSPEvaluation()
 
     method = EoH(llm=llm,
                  profiler=EoHProfiler(log_dir='logs', log_style='complex'),

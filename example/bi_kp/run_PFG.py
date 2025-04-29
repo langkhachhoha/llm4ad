@@ -1,4 +1,4 @@
-from llm4ad.task.optimization.bi_tsp_semo import BITSPEvaluation
+from llm4ad.task.optimization.bi_kp import BIKPEvaluation
 from llm4ad.tools.llm.llm_api_https import HttpsApi
 from llm4ad.tools.llm.llm_api_gemini import HttpsApiGemini 
 from llm4ad.tools.llm.llm_api_openai import HttpsApiOpenAI
@@ -25,7 +25,7 @@ def main():
     #                         model='gpt-3.5-turbo',
     #                         timeout=30
     #                         )
-    task = BITSPEvaluation()
+    task = BIKPEvaluation()
 
     method = EoH(llm=llm,
                  profiler=EoHProfiler(log_dir='logs', log_style='complex'),
