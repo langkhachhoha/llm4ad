@@ -6,36 +6,48 @@ import random
 
 def select_neighbor(
     archive: List[Tuple[np.ndarray, Tuple[float, float]]],
-    instance: np.ndarray,
-    distance_matrix_1: np.ndarray,
-    distance_matrix_2: np.ndarray
+    coords: np.ndarray,
+    demand: np.ndarray,
+    distance_matrix: np.ndarray,
+    capacity: float
 ) -> np.ndarray:
     """
     Select a promising solution from the archive and generate a neighbor solution from it.
-
     Args:
-    archive: List of (solution, objective) pairs. Each solution is a numpy array of node IDs.
-             Each objective is a tuple of two float values.
-    instance: Numpy array of shape (N, 4). Each row corresponds to a node and contains its coordinates in two 2D spaces: (x1, y1, x2, y2).
-    distance_matrix_1: Distance matrix in the first objective space.
-    distance_matrix_2: Distance matrix in the second objective space.
+        archive: A list of tuples, where each tuple contains:
+            - solution: A list of numpy arrays, each representing a vehicle route. 
+                        Each route starts and ends at the depot (node index 0), e.g., [0, 3, 5, 0].
+            - objective: A tuple of two float values (total_distance, makespan), 
+                        representing the two objective values of the solution.
+        
+        coords: A numpy array of shape (n_nodes, 2), representing (x, y) coordinates of each node (depot + customers).
+        demand: A numpy array of shape (n_nodes,), where demand[i] is the demand of node i. The depot has demand 0.
+        distance_matrix: A numpy array of shape (n_nodes, n_nodes), where [i][j] is the Euclidean distance between node i and j.
+        capacity: A float representing the maximum capacity of each vehicle.
 
     Returns:
-    A new neighbor solution (numpy array).
+        A new neighbor solution.
     """
     base_solution = archive[0][0].copy()
     new_solution = base_solution.copy()
-    new_solution[0], new_solution[1] = new_solution[1], new_solution[0]
 
     return new_solution
+
 '''
 
-task_description = "You are solving a Bi-objective Travelling Salesman Problem (bi-TSP), where each node has two different 2D coordinates: \
-(x1, y1) and (x2, y2), representing its position in two objective spaces. The goal is to find a tour visiting each node exactly once and returning \
-to the starting node, while minimizing two objectives simultaneously: the total tour length in each coordinate space. \
-Given an archive of non-dominated solutions, where each solution is a numpy array representing a TSP tour, and its corresponding objective \
-is a tuple of two values (cost in each space), design a heuristic function named 'select_neighbor' that selects one solution from the archive \
-and generates a neighbor solution from it. Do not choose randomly. Instead, think about how to identify a solution that is promising for further  \
-local improvement. Using a novel or creative strategy — not necessarily 2-opt. You can try swap, reinsertion, segment relocation, or invent your own local \
-transformation logic.  The function should return the new neighbor solution."
+
+
+task_description = "You are solving a Bi-objective Capacitated Vehicle Routing Problem (Bi-CVRP), where a single depot and multiple customers are located in 2D space. \
+Each customer has a positive demand, and all vehicles in the fleet have identical capacity limits. The objective is to construct a set of routes, each starting and ending at the depot, \
+such that all customers are served, vehicle capacities are not exceeded on any route, and two conflicting objectives are minimized: \
+(1) the total travel distance across all routes, and (2) the makespan, defined as the length of the longest individual route. \
+Each solution in the archive is represented as a list of NumPy arrays, where each array denotes a single route (starting and ending with depot index 0), \
+and is paired with a tuple of two objective values (total_distance, makespan). \
+Your task is to implement a function named 'select_neighbor' that selects one promising solution from the archive and generates a new, feasible neighbor solution. \
+Do not choose a solution or neighbor modification randomly. Instead, apply an intelligent strategy to identify a solution with potential for local improvement, \
+and apply a creative local transformation (e.g., customer swap between routes, reinsertion within or across routes, or segment relocation) or invent your own local \
+transformation logic.  Ensure that the returned neighbor solution remains feasible under the vehicle capacity constraint. \
+The function should return the new neighbor solution."
+
+
 

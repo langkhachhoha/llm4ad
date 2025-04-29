@@ -1,2 +1,2 @@
-from .evaluation import BITSPEvaluation
+from .evaluation import BICVRPEvaluation    
 from .template import template_program
