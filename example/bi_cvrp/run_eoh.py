@@ -7,20 +7,25 @@ from llm4ad.method.eoh import EoH
 from llm4ad.method.eoh import EoHProfiler
 
 
+# Set your LLM API key here
+with open("secret.txt", "r") as f:
+    secret = f
+    llm_api_key = secret.readline().strip()
+
 
 def main():
 
-    # llm = HttpsApi(host='api.openai.com',  # your host endpoint, e.g., api.openai.com/v1/completions, api.deepseek.com
-    #                key='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',  # your key, e.g., sk-abcdefghijklmn
-    #                model='gpt-4o-mini',  # your llm, e.g., gpt-3.5-turbo, deepseek-chat
-    #                timeout=30
-    #                )
-    # llm = HttpsApiGemini(api_key='AIzaSyCTvxpxSBpdviuLSaQq-mFXiZYA2d-CmME',
+    llm = HttpsApi(host='api.openai.com',  # your host endpoint, e.g., api.openai.com/v1/completions, api.deepseek.com
+                   key=llm_api_key, 
+                   model='gpt-4o-mini',  # your llm, e.g., gpt-3.5-turbo, deepseek-chat
+                   timeout=30
+                   )
+    # llm = HttpsApiGemini(api_key='',
     #                      model='gemini 2.0 flash',
     #                      )
 
     # llm = HttpsApiOpenAI(base_url='https://api.openai.com', 
-    #                         api_key='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',
+    #                         api_key='',
     #                         model='gpt-3.5-turbo',
     #                         timeout=30
     #                         )
@@ -39,4 +44,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    print(llm_api_key)
+
+
+
