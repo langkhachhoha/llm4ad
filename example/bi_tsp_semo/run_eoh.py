@@ -10,11 +10,11 @@ from llm4ad.method.eoh import EoHProfiler
 
 def main():
 
-    llm = HttpsApi(host='api.openai.com',  # your host endpoint, e.g., api.openai.com/v1/completions, api.deepseek.com
-                   key='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',  # your key, e.g., sk-abcdefghijklmn
-                   model='gpt-4o-mini',  # your llm, e.g., gpt-3.5-turbo, deepseek-chat
-                   timeout=30
-                   )
+    # llm = HttpsApi(host='api.openai.com',  # your host endpoint, e.g., api.openai.com/v1/completions, api.deepseek.com
+    #                key='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',  # your key, e.g., sk-abcdefghijklmn
+    #                model='gpt-4o-mini',  # your llm, e.g., gpt-3.5-turbo, deepseek-chat
+    #                timeout=30
+    #                )
     # llm = HttpsApiGemini(api_key='AIzaSyCTvxpxSBpdviuLSaQq-mFXiZYA2d-CmME',
     #                      model='gemini 2.0 flash',
     #                      )
