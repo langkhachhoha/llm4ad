@@ -35,12 +35,12 @@ def main():
     method = EoH(llm=llm,
                  profiler=EoHProfiler(log_dir='logs', log_style='complex'),
                  evaluation=task,
-                 max_sample_nums=100,
-                 max_generations=10,
-                 pop_size=2,
+                 max_sample_nums=1000,
+                 max_generations=20,
+                 pop_size=10,
                  num_samplers=1,
                  num_evaluators=1,
-                 llm_review=True
+                 llm_review=False
                  )
 
     method.run()

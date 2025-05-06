@@ -1,0 +1,43 @@
+[2025-05-05 21:35:09] profile.py(179) : ==================================LLM Parameters===============================
+[2025-05-05 21:35:09] profile.py(180) : LLM: HttpsApi
+[2025-05-05 21:35:09] profile.py(183) : do_auto_trim: True
+[2025-05-05 21:35:09] profile.py(183) : debug_mode: False
+[2025-05-05 21:35:09] profile.py(183) : _host: api.openai.com
+[2025-05-05 21:35:09] profile.py(183) : _key: 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
+[2025-05-05 21:35:09] profile.py(183) : _model: gpt-4o-mini
+[2025-05-05 21:35:09] profile.py(183) : _timeout: 30
+[2025-05-05 21:35:09] profile.py(183) : _kwargs: {}
+[2025-05-05 21:35:09] profile.py(183) : _cumulative_error: 0
+[2025-05-05 21:35:09] profile.py(185) : ==================================Problem Parameters===============================
+[2025-05-05 21:35:09] profile.py(187) : Problem: BITSPEvaluation
+[2025-05-05 21:35:09] profile.py(190) : task_description: You are solving a Bi-objective Travelling Salesman Problem (bi-TSP), where each node has two different 2D coordinates: (x1, y1) and (x2, y2), representing its position in two objective spaces. The goal is to find a tour visiting each node exactly once and returning to the starting node, while minimizing two objectives simultaneously: the total tour length in each coordinate space. Given an archive of non-dominated solutions, where each solution is a numpy array representing a TSP tour, and its corresponding objective is a tuple of two values (cost in each space), design a heuristic function named 'select_neighbor' that selects one solution from the archive and generates a neighbor solution from it. Do not choose randomly. Instead, think about how to identify a solution that is promising for further  local improvement. Using a novel or creative strategy — not necessarily 2-opt. You can try swap, reinsertion, segment relocation, or invent your own local transformation logic.  The function should return the new neighbor solution.
+[2025-05-05 21:35:09] profile.py(190) : use_numba_accelerate: False
+[2025-05-05 21:35:09] profile.py(190) : use_protected_div: False
+[2025-05-05 21:35:09] profile.py(190) : protected_div_delta: 1e-05
+[2025-05-05 21:35:09] profile.py(190) : random_seed: None
+[2025-05-05 21:35:09] profile.py(190) : timeout_seconds: 20
+[2025-05-05 21:35:09] profile.py(190) : exec_code: True
+[2025-05-05 21:35:09] profile.py(190) : safe_evaluate: True
+[2025-05-05 21:35:09] profile.py(190) : daemon_eval_process: False
+[2025-05-05 21:35:09] profile.py(190) : n_instance: 8
+[2025-05-05 21:35:09] profile.py(190) : problem_size: 20
+[2025-05-05 21:35:09] profile.py(190) : ref_point: [20. 20.]
+[2025-05-05 21:35:09] profile.py(192) : ==================================Method Parameters===============================
+[2025-05-05 21:35:09] profile.py(194) : Method: EoH
+[2025-05-05 21:35:09] profile.py(197) : _max_generations: 20
+[2025-05-05 21:35:09] profile.py(197) : _max_sample_nums: 1000
+[2025-05-05 21:35:09] profile.py(197) : _pop_size: 10
+[2025-05-05 21:35:09] profile.py(197) : _selection_num: 2
+[2025-05-05 21:35:09] profile.py(197) : _use_e2_operator: True
+[2025-05-05 21:35:09] profile.py(197) : _use_m1_operator: True
+[2025-05-05 21:35:09] profile.py(197) : _use_m2_operator: True
+[2025-05-05 21:35:09] profile.py(197) : _num_samplers: 1
+[2025-05-05 21:35:09] profile.py(197) : _num_evaluators: 1
+[2025-05-05 21:35:09] profile.py(197) : _resume_mode: False
+[2025-05-05 21:35:09] profile.py(197) : _initial_sample_num: None
+[2025-05-05 21:35:09] profile.py(197) : _initial_sample_nums_max: 50
+[2025-05-05 21:35:09] profile.py(197) : _debug_mode: False
+[2025-05-05 21:35:09] profile.py(197) : _multi_thread_or_process_eval: process
+[2025-05-05 21:35:09] profile.py(197) : review: False
+[2025-05-05 21:35:09] profile.py(197) : _function_to_evolve_name: select_neighbor
+[2025-05-05 21:35:09] profile.py(199) : ==================================End of Parameters===============================

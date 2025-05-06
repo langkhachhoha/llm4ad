@@ -1,0 +1,82 @@
+[
+     {
+          "algorithm": "{Select the solution with the best objective (minimum cost in both objectives) from the archive, and apply a segment relocation strategy to create a neighbor solution.}",
+          "function": "def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray) -> np.ndarray:\n    best_solution, _ = min(archive, key=lambda x: (x[1][0], x[1][1]))\n\n    # Step 2: Generate a neighbor solution using segment relocation\n    n = len(best_solution)\n    neighbor_solution = best_solution.copy()\n\n    # Randomly choose two segments to relocate\n    segment_start = np.random.randint(0, n)\n    segment_length = np.random.randint(1, n // 2)  # Ensure the segment length is reasonable\n    segment_end = (segment_start + segment_length) % n\n    \n    # Extract the segment to relocate\n    segment = neighbor_solution[segment_start:segment_end]\n\n    # Remove the segment from the original position\n    remaining_nodes = np.concatenate((neighbor_solution[:segment_start], neighbor_solution[segment_end:]))\n    \n    # Choose a new position to insert the segment\n    insert_position = np.random.randint(0, len(remaining_nodes) + 1)\n    \n    # Create the new neighbor solution\n    neighbor_solution = np.insert(remaining_nodes, insert_position, segment)\n    \n    return neighbor_solution\n\n",
+          "score": [
+               -259.28473320718695,
+               0.37558674812316895
+          ]
+     },
+     {
+          "algorithm": "{Select the solution from the archive that has the best trade-off between objectives and apply a segment swap strategy that aims to minimize the distance in both objective spaces.}",
+          "function": "def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray) -> np.ndarray:\n    best_solution = min(archive, key=lambda x: (x[1][0] + x[1][1]))[0]\n    best_tour = best_solution.copy()\n    \n    n = len(best_tour)\n\n    # Choose two segments to swap, ensuring they are non-overlapping\n    start1 = np.random.randint(0, n)\n    length1 = np.random.randint(1, n // 2)\n    end1 = min(start1 + length1, n)\n\n    start2 = np.random.randint(0, n)\n    length2 = np.random.randint(1, n // 2)\n    end2 = min(start2 + length2, n)\n\n    # Ensure segments do not overlap\n    while (start1 < end2 and start2 < end1):\n        start2 = np.random.randint(0, n)\n        length2 = np.random.randint(1, n // 2)\n        end2 = min(start2 + length2, n)\n\n    # Extract segments\n    segment1 = best_tour[start1:end1]\n    segment2 = best_tour[start2:end2]\n\n    # Create new tour by removing segments and inserting them in each other's positions\n    new_tour = best_tour.tolist()\n    new_tour = new_tour[:start1] + segment2.tolist() + new_tour[end1:]\n    new_tour = new_tour[:start2] + segment1.tolist() + new_tour[end2:]\n\n    return np.array(new_tour)\n\n",
+          "score": [
+               -378.67305408414734,
+               0.6240417659282684
+          ]
+     },
+     {
+          "algorithm": "{Select the solution with the best trade-off in both objectives, then apply a segment relocation strategy that moves a segment of the tour to a new location while preserving the tour structure.}",
+          "function": "def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray) -> np.ndarray:\n    best_solution = min(archive, key=lambda x: (x[1][0] + x[1][1]))[0]\n    best_tour = best_solution.copy()\n    \n    n = len(best_tour)\n    \n    # Step 1: Select a segment to relocate\n    segment_start = np.random.randint(0, n)\n    segment_length = np.random.randint(1, n // 2)  # Length of the segment to relocate (1 to n//2)\n    \n    segment_end = (segment_start + segment_length) % n\n    segment = best_tour[segment_start:segment_end]\n    \n    # Remove the segment from the tour\n    remaining_tour = np.concatenate((best_tour[:segment_start], best_tour[segment_end:]))\n    \n    # Step 2: Choose a new position for the segment\n    insert_position = np.random.randint(0, len(remaining_tour) + 1)\n    \n    # Step 3: Insert the segment back into the tour at the new position\n    new_tour = np.insert(remaining_tour, insert_position, segment)\n    \n    return new_tour\n\n",
+          "score": [
+               -282.796815398684,
+               0.3883688151836395
+          ]
+     },
+     {
+          "algorithm": "{Select the solution with the best trade-off in the second objective and apply a segment relocation strategy.}",
+          "function": "def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray) -> np.ndarray:\n    best_solution = min(archive, key=lambda x: x[1][1])[0]  # Minimizing the second objective\n    best_tour = best_solution.copy()\n    \n    n = len(best_tour)\n    \n    # Step 1: Select a segment of the tour to relocate\n    segment_start = np.random.randint(0, n)\n    segment_length = np.random.randint(1, n // 2)  # Length of the segment to relocate (1 to n//2)\n    \n    segment_end = (segment_start + segment_length) % n\n    segment = best_tour[segment_start:segment_end]\n    \n    # Remove the segment from the tour\n    remaining_tour = np.concatenate((best_tour[:segment_start], best_tour[segment_end:]))\n    \n    # Step 2: Choose a new position to insert the segment\n    insert_position = np.random.randint(0, len(remaining_tour) + 1)\n    \n    # Create the new tour by inserting the segment\n    new_tour = np.insert(remaining_tour, insert_position, segment)\n    \n    return new_tour\n\n",
+          "score": [
+               -255.42253631445405,
+               0.3737056851387024
+          ]
+     },
+     {
+          "algorithm": "{Select the solution from the archive with the least distance in both objective spaces and apply a segment relocation strategy to enhance local search.}",
+          "function": "def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray) -> np.ndarray:\n    best_solution = min(archive, key=lambda x: (x[1][0] + x[1][1]))[0]\n    n = len(best_solution)\n\n    # Choose a random segment to relocate\n    start = np.random.randint(0, n)\n    length = np.random.randint(1, n // 2)\n    end = min(start + length, n)\n\n    segment = best_solution[start:end]\n\n    # Select a new position for the segment, ensuring it doesn't overlap\n    new_position = np.random.randint(0, n - length + 1)\n    while new_position >= start and new_position < end:\n        new_position = np.random.randint(0, n - length + 1)\n\n    # Create new tour by removing the segment and inserting it at the new position\n    new_tour = np.delete(best_solution, np.s_[start:end])\n    new_tour = np.insert(new_tour, new_position, segment)\n\n    return new_tour\n\n",
+          "score": [
+               -217.81576188366145,
+               0.27468186616897583
+          ]
+     },
+     {
+          "algorithm": "{Select the solution with the best trade-off in both objectives and apply a swap strategy focusing on improving the first objective.}",
+          "function": "def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray) -> np.ndarray:\n    best_solution, _ = min(archive, key=lambda x: (x[1][0], x[1][1]))\n    neighbor_solution = best_solution.copy()\n\n    n = len(neighbor_solution)\n\n    # Step 1: Identify two nodes to swap\n    node1_index = np.random.randint(0, n)\n    node2_index = np.random.randint(0, n)\n    \n    # Ensure we don't swap the same node\n    while node1_index == node2_index:\n        node2_index = np.random.randint(0, n)\n\n    # Step 2: Swap the two nodes\n    neighbor_solution[node1_index], neighbor_solution[node2_index] = neighbor_solution[node2_index], neighbor_solution[node1_index]\n\n    return neighbor_solution\n\n",
+          "score": [
+               -177.3260886080809,
+               0.2474287748336792
+          ]
+     },
+     {
+          "algorithm": "{Select the solution with the best balance between the two objectives, then apply a swap strategy that exchanges non-adjacent nodes in the tour to explore new configurations while maintaining the overall structure.}",
+          "function": "def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray) -> np.ndarray:\n    best_solution = min(archive, key=lambda x: (x[1][0] + x[1][1]))[0]\n    best_tour = best_solution.copy()\n    \n    n = len(best_tour)\n    \n    # Step 1: Select two non-adjacent nodes to swap\n    while True:\n        node_a = np.random.randint(0, n)\n        node_b = np.random.randint(0, n)\n        if abs(node_a - node_b) > 1 and node_a != node_b:  # Ensure they are non-adjacent\n            break\n    \n    # Step 2: Create a new tour by swapping the selected nodes\n    new_tour = best_tour.copy()\n    new_tour[node_a], new_tour[node_b] = new_tour[node_b], new_tour[node_a]\n    \n    return new_tour\n\n",
+          "score": [
+               -199.42846130420543,
+               0.25368836522102356
+          ]
+     },
+     {
+          "algorithm": "{Select the solution from the archive that has the minimum combined distance in both objective spaces, and apply a segment relocation strategy to improve local structure by repositioning a segment of the tour.}",
+          "function": "def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray) -> np.ndarray:\n    best_solution = min(archive, key=lambda x: (x[1][0] + x[1][1]))[0]\n    best_tour = best_solution.copy()\n    \n    n = len(best_tour)\n\n    # Select a segment to relocate\n    start = np.random.randint(0, n)\n    length = np.random.randint(1, n // 2)\n    end = min(start + length, n)\n\n    segment = best_tour[start:end]\n    remaining = np.concatenate((best_tour[:start], best_tour[end:]))\n\n    # Choose a new position to insert the segment\n    new_position = np.random.randint(0, len(remaining) + 1)\n\n    # Create new tour by inserting the segment at the new position\n    new_tour = np.concatenate((remaining[:new_position], segment, remaining[new_position:]))\n\n    return new_tour\n\n",
+          "score": [
+               -217.96302597666022,
+               0.2793126106262207
+          ]
+     },
+     {
+          "algorithm": "{Select the solution with the best trade-off in both objectives, then apply a swap strategy that exchanges two nodes in the tour to explore the solution space.}",
+          "function": "def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray) -> np.ndarray:\n    \"\"\"\n    Select a promising solution from the archive and generate a neighbor solution from it.\n\n    Args:\n    archive: List of (solution, objective) pairs. Each solution is a numpy array of node IDs.\n             Each objective is a tuple of two float values (negative_hypervolume, time_to_finish).\n    instance: Numpy array of shape (N, 4). Each row corresponds to a node and contains its coordinates in two 2D spaces: (x1, y1, x2, y2).\n    distance_matrix_1: Distance matrix in the first objective space.\n    distance_matrix_2: Distance matrix in the second objective space.\n\n    Returns:\n    A new neighbor solution (numpy array).\n    \"\"\"\n    best_solution = min(archive, key=lambda x: (x[1][0] + x[1][1]))[0]\n    best_tour = best_solution.copy()\n    \n    n = len(best_tour)\n    \n    # Step 1: Select two different nodes to swap\n    idx1, idx2 = np.random.choice(n, 2, replace=False)\n    \n    # Step 2: Swap the nodes in the tour\n    new_tour = best_tour.copy()\n    new_tour[idx1], new_tour[idx2] = new_tour[idx2], new_tour[idx1]\n    \n    return new_tour\n\n",
+          "score": [
+               -203.05153113277407,
+               0.26333293318748474
+          ]
+     },
+     {
+          "algorithm": "{Select a solution that has the highest total distance in both objective spaces, then apply a swap strategy on two randomly selected nodes in the tour.}",
+          "function": "def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray) -> np.ndarray:\n    \"\"\"\n    Select a promising solution from the archive and generate a neighbor solution from it.\n\n    Args:\n    archive: List of (solution, objective) pairs. Each solution is a numpy array of node IDs.\n             Each objective is a tuple of two float values (negative_hypervolume, time_to_finish).\n    instance: Numpy array of shape (N, 4). Each row corresponds to a node and contains its coordinates in two 2D spaces: (x1, y1, x2, y2).\n    distance_matrix_1: Distance matrix in the first objective space.\n    distance_matrix_2: Distance matrix in the second objective space.\n\n    Returns:\n    A new neighbor solution (numpy array).\n    \"\"\"\n    worst_solution = max(archive, key=lambda x: (x[1][0] + x[1][1]))[0]\n    neighbor_solution = worst_solution.copy()\n\n    # Step 2: Swap two nodes in the tour\n    n = len(neighbor_solution)\n    idx1, idx2 = np.random.choice(n, 2, replace=False)  # Ensure two different indices are chosen\n\n    # Perform the swap\n    neighbor_solution[idx1], neighbor_solution[idx2] = neighbor_solution[idx2], neighbor_solution[idx1]\n\n    return neighbor_solution\n\n",
+          "score": [
+               -169.02897415505942,
+               0.2577797770500183
+          ]
+     }
+]

@@ -35,9 +35,9 @@ def main():
     method = EoH(llm=llm,
                  profiler=EoHProfiler(log_dir='logs', log_style='complex'),
                  evaluation=task,
-                 max_sample_nums=20,
-                 max_generations=5,
-                 pop_size=2,
+                 max_sample_nums=4000,
+                 max_generations=20,
+                 pop_size=10,
                  num_samplers=1,
                  num_evaluators=1)
 
@@ -46,3 +46,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
