@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from pymoo.indicators.hv import HV 
 from pymoo.indicators.igd import IGD
+from pymoo.util.nds.non_dominated_sorting import NonDominatedSorting
 
 
 # Load data
@@ -25,7 +26,6 @@ objectives3 = np.array([ind['score'] for ind in data3])
 all_objectives = np.vstack([objectives, objectives2, objectives3])
 
 # Filter non-dominated front (Pareto front)
-from pymoo.util.nds.non_dominated_sorting import NonDominatedSorting
 nds = NonDominatedSorting().do(all_objectives, only_non_dominated_front=True)
 reference_front = all_objectives[nds]
 igd = IGD(reference_front)
@@ -85,3 +85,5 @@ plt.table(cellText=table_data,
 
 plt.subplots_adjust(bottom=0.35)
 plt.show()
+
+

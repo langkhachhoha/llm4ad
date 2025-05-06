@@ -43,10 +43,9 @@ such that all customers are served, vehicle capacities are not exceeded on any r
 (1) the total travel distance across all routes, and (2) the makespan, defined as the length of the longest individual route. \
 Each solution in the archive is represented as a list of NumPy arrays, where each array denotes a single route (starting and ending with depot index 0), \
 and is paired with a tuple of two objective values (total_distance, makespan). \
-Your task is to implement a function named 'select_neighbor' that selects one promising solution from the archive and generates a new, feasible neighbor solution. \
+Your task is to implement a function named 'select_neighbor' that selects one promising solution from the archive and apply a novel or hybrid local search operator to generate a feasible neighbor solution from it. \
 Do not choose a solution or neighbor modification randomly. Instead, apply an intelligent strategy to identify a solution with potential for local improvement, \
-and apply a creative local transformation (e.g., customer swap between routes, reinsertion within or across routes, or segment relocation) or invent your own local \
-transformation logic.  Ensure that the returned neighbor solution remains feasible under the vehicle capacity constraint. \
+and using a creative local search strategy that you design yourself. Avoid standard methods like pure 2-opt; instead, invent or combine transformations. Ensure that the returned neighbor solution remains feasible under the vehicle capacity constraint. \
 The function should return the new neighbor solution."
 
 

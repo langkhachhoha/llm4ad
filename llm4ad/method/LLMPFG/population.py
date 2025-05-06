@@ -150,12 +150,19 @@ def Generation_PFG(pop, GK, knee_point, nadir_point, sigma):
 
 
 import random
+
+
 def parent_selection(pop, m, GK = 4, sigma = 0.01, crossover_rate = 0.8):
     knee_point = cal_knee_point(pop)
     nadir_point = cal_nadir_point(pop)
     PFG = Generation_PFG(pop, GK, knee_point, nadir_point, sigma)
     if (random.random() > crossover_rate):
-        parents = random.choices(pop, k=m)
+        funcs = [f for f in pop if f.score is not None]
+        func = sorted(funcs, key=lambda f: f.score[0])
+        p = [1 / (r + len(func)) for r in range(len(func))]
+        p = np.array(p)
+        p = p / np.sum(p)
+        parents = random.choices(pop, k=m, weights=p)
     else:
         i = random.randint(0, len(knee_point)-1) 
         j = random.randint(0, len(PFG[i]) - 2)

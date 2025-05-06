@@ -109,7 +109,7 @@ class TRITSPEvaluation(Evaluation):
             timeout_seconds=20
         )
 
-        self.n_instance = 4
+        self.n_instance = 8
         self.problem_size = 20
         getData = GetData(self.n_instance, self.problem_size)
         self._datasets = getData.generate_instances()
@@ -119,55 +119,52 @@ class TRITSPEvaluation(Evaluation):
         return evaluate(self._datasets,self.n_instance,self.problem_size, self.ref_point, callable_func)
     
 
-# if __name__ == '__main__':
-#     import numpy as np
-#     from typing import List, Tuple
-#     import random 
-#     def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray) -> np.ndarray:
-#         """
-#         Select a promising solution from the archive and generate a neighbor solution from it.
+if __name__ == '__main__':
+    import numpy as np
+    from typing import List, Tuple
+    import random 
+    def select_neighbor(archive: List[Tuple[np.ndarray, Tuple[float, float]]], instance: np.ndarray, distance_matrix_1: np.ndarray, distance_matrix_2: np.ndarray, distance_matrix_3: np.ndarray) -> np.ndarray:
+        """
+        Select a promising solution from the archive and generate a neighbor solution from it.
 
-#         Args:
-#         archive: List of (solution, objective) pairs. Each solution is a numpy array of node IDs.
-#                 Each objective is a tuple of two float values.
-#         instance: Numpy array of shape (N, 4). Each row corresponds to a node and contains its coordinates in two 2D spaces: (x1, y1, x2, y2).
-#         distance_matrix_1: Distance matrix in the first objective space.
-#         distance_matrix_2: Distance matrix in the second objective space.
+        Args:
+        archive: List of (solution, objective) pairs. Each solution is a numpy array of node IDs.
+                Each objective is a tuple of three float values.
+        instance: Numpy array of shape (N, 4). Each row corresponds to a node and contains its coordinates in two 2D spaces: (x1, y1, x2, y2).
+        distance_matrix_1: Distance matrix in the first objective space.
+        distance_matrix_2: Distance matrix in the second objective space.
+        distance_matrix_3: Distance matrix in the third objective space.
 
-#         Returns:
-#         A new neighbor solution (numpy array).
-#         """
-#         best_solution = None
-#         best_avg_distance = float('inf')
+        Returns:
+        A new neighbor solution (numpy array).
+        """
+        best_solution, _ = min(archive, key=lambda x: sum(x[1]))
 
-#         for solution, objectives in archive:
-#             avg_distance = np.mean([distance_matrix_1[solution[i], solution[j]] + distance_matrix_2[solution[i], solution[j]] for i in range(len(solution)) for j in range(len(solution)) if i != j])
-            
-#             if avg_distance < best_avg_distance:
-#                 best_avg_distance = avg_distance
-#                 best_solution = solution
-
-#         # Generate a neighbor solution through reinsertion
-#         new_solution = best_solution.copy()
+        # Step 2: Generate a neighbor solution using segment relocation
+        # Create a neighbor solution using segment relocation
+        n = len(best_solution)
+        if n < 4:  # Need at least 4 nodes to perform a segment relocation
+            return best_solution.copy()
         
-#         # Randomly choose a segment to relocate
-#         start_idx = np.random.randint(len(new_solution))
-#         end_idx = np.random.randint(len(new_solution))
+        # Randomly select two segments to relocate
+        start = np.random.randint(0, n - 2)
+        end = np.random.randint(start + 2, n)  # Ensure segments don't overlap
+        segment = best_solution[start:end].copy()
         
-#         if start_idx > end_idx:
-#             start_idx, end_idx = end_idx, start_idx
+        # Remove the segment from the original solution
+        new_solution = np.delete(best_solution, np.s_[start:end])
         
-#         segment = new_solution[start_idx:end_idx + 1]
-#         new_solution = np.delete(new_solution, np.s_[start_idx:end_idx + 1])
+        # Randomly choose a position to insert the segment back
+        insert_position = np.random.randint(0, len(new_solution) + 1)
         
-#         # Randomly select a position to reinsert the segment
-#         reinsertion_idx = np.random.randint(len(new_solution) + 1)
-#         new_solution = np.insert(new_solution, reinsertion_idx, segment)
+        # Create the new neighbor solution
+        neighbor_solution = np.insert(new_solution, insert_position, segment)
         
-#         return new_solution
+        return neighbor_solution
     
-#     tsp = BITSPEvaluation()
-#     tsp.evaluate_program('_',select_neighbor)
+    tsp = TRITSPEvaluation()
+    cst, _ = tsp.evaluate_program('_',select_neighbor)
+    print(cst)
 
 
 

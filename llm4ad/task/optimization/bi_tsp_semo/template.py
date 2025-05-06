@@ -35,7 +35,6 @@ task_description = "You are solving a Bi-objective Travelling Salesman Problem (
 to the starting node, while minimizing two objectives simultaneously: the total tour length in each coordinate space. \
 Given an archive of non-dominated solutions, where each solution is a numpy array representing a TSP tour, and its corresponding objective \
 is a tuple of two values (cost in each space), design a heuristic function named 'select_neighbor' that selects one solution from the archive \
-and generates a neighbor solution from it. Do not choose randomly. Instead, think about how to identify a solution that is promising for further  \
-local improvement. Using a novel or creative strategy — not necessarily 2-opt. You can try swap, reinsertion, segment relocation, or invent your own local \
-transformation logic.  The function should return the new neighbor solution."
+and apply a novel or hybrid local search operator to generate a neighbor solution from it. Do not choose randomly. Instead, think about how to identify a solution that is promising for further  \
+local improvement. Using a creative local search strategy that you design yourself. Avoid standard methods like pure 2-opt; instead, invent or combine transformations.  The function should return the new neighbor solution."
 

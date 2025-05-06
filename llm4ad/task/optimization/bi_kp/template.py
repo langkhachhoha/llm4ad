@@ -37,10 +37,10 @@ value1 and value2. The goal is to select a subset of items such that the total w
 simultaneously maximizing the total value in both objective spaces. \
 Given an archive of non-dominated solutions, where each solution is a binary numpy array indicating item inclusion (1) or exclusion (0), \
 and its corresponding objective is a tuple of two values (total value1, total value2), design a heuristic function named 'select_neighbor' that selects one solution from the archive \
-and generates a neighbor solution from it. \
+and apply a novel or hybrid local search operator to generate a neighbor solution from it. \
 Must always ensure that the generated neighbor solution remains feasible, \
 i.e., the total weight must not exceed the knapsack capacity \
 Do not choose randomly. Instead, think about how to identify a solution that is promising for further  \
-local improvement. Using a novel or creative strategy, invent your own local \
-transformation logic.  The function should return the new neighbor solution."
+local improvement. Using a creative local search strategy that you design yourself. Avoid standard methods like pure 2-opt; instead, invent or combine transformations. The function should return the new neighbor solution."
+
 
